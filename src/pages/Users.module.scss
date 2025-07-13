@@ -1,0 +1,73 @@
+.tableWrapper {
+  max-width: 100%;
+  overflow-x: auto; /* Горизонтальная прокрутка при переполнении */
+}
+
+.cartTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    tr {
+      border-bottom: 1px solid #ccc;
+
+      th {
+        padding: 8px;
+        width: 300px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border: 1px solid #ccc;
+
+      td {
+        padding: 8px;
+        text-align: center;
+
+        &:nth-child(2) img {
+          max-width: 80px;
+          height: auto;
+          display: block;
+          margin: 0 auto;
+        }
+
+        input[type='number'] {
+          width: 50px;
+          text-align: center;
+        }
+
+        button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          line-height: 1;
+          color: #f00;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #c00;
+          }
+        }
+      }
+    }
+  }
+}
+
+.total {
+  margin-top: 12px;
+  font-weight: bold;
+  text-align: right;
+}
+.title{
+  font-size: 20px;
+    color: #007bff;
+}
+.text{
+  font-size: 15px;
+  font-weight: 400;
+}

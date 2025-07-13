@@ -1,0 +1,16 @@
+.box{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    &__button{ 
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+}
+&__text{
+    font-size: 20px;
+    padding: 10px;
+        
+    }
+}
