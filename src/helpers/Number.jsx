@@ -59,14 +59,19 @@ const Numberlist = () => {
                     </div>
                     <div className="buttons__box-target">
 
-                        <button 
+                       {currentPage > 1 ? (
+                        <button
                             className="buttons__box-target-btn"
                             onClick={() => handlePageChange(currentPage - 1)}
-                            disabled={currentPage === 1 || loading}    
-                            >
+                            disabled={loading} // Упрощаем условие disabled
+                        >
                             Previous
                         </button>
+                    ) : null}
+
+
                         <span className="buttons__box-target-text">Page {currentPage} of {lastPage}</span>
+                        {currentPage < 17 ? (
                         <button
                         className="buttons__box-target-btn"
                         onClick={() => handlePageChange(currentPage + 1)}
@@ -74,6 +79,8 @@ const Numberlist = () => {
                         >
                                             Next
                         </button>
+                        
+                    ) : null}
                     </div>
                 </div>              
             </div>
