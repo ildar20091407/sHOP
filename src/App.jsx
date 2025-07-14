@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { fetchProducts } from './store/weather/weatherSlice'; // Assuming you have these
 
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+
 import Products from "./components/Products";
 import Users from "./pages/Users";
 import ProductsId from "./components/ProductsPages/ProductsID";  // Added import
@@ -52,8 +52,8 @@ function App() {
         <>
             <Navbar />
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/products" element={<Products />} />
+
+                <Route path="/" element={<Products />} />
                 <Route
                     path="/productpage/:id"   // Changed path for clarity
                     element={<ProductsId addToCart={addToCart} />}

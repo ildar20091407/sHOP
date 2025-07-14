@@ -9,6 +9,7 @@ import { selectProducts } from '../../store/weather/weatherSlice';
 
 SwiperCore;
 
+
 function ProductDetailsPage({ addToCart }) {
     const { id } = useParams();
     const productId = parseInt(id, 10);
@@ -73,7 +74,7 @@ function ProductDetailsPage({ addToCart }) {
     return (
         <div className="container">
             <div className={s.box}>
-                <Link to="/products">
+                <Link to="/">
                     <button className={s.btn}>
                         Go back
                     </button>
