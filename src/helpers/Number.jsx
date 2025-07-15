@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
         fetchProducts,
     } from '../store/weather/weatherSlice';
     import  './Number.scss'
+    import img from "../assets/images/png-transparent-arrow-arrows-direction-universal-blue-line-filled-icon.png"
 
 const Numberlist = () => {
   const numbers = []; // Объявляем пустой массив
@@ -46,45 +47,42 @@ const Numberlist = () => {
                 <div className="buttons__box">
                     <div className="buttons__box-numbers">
 
+                        
+                                               {currentPage > 1 ? (
+                                                <button
+                                                    onClick={() => handlePageChange(currentPage - 1)}
+                                                    disabled={loading} // Упрощаем условие disabled
+                                                >
+                                                    <img src={img} alt="" className='buttons__box-target-previous'/>
+                                                    
+                                                </button>
+                                            ) : null}
                         {numbers.map((number) => ( // Используем "number" вместо "i" для понятности
                             <button 
-                            className="buttons__box-number"
+                            className={`buttons__box-number ${currentPage === number ? 'buttons__box-number-active' : ''}`}
                             onClick={() => handlePageChange(number)}
                             
                             key={number}>
                                 {number}
                                 </button>            
                         ))}
-
-                    </div>
-                    <div className="buttons__box-target">
-
-                       {currentPage > 1 ? (
-                        <button
-                            className="buttons__box-target-btn"
-                            onClick={() => handlePageChange(currentPage - 1)}
-                            disabled={loading} // Упрощаем условие disabled
-                        >
-                            Previous
-                        </button>
-                    ) : null}
-
-
-                        <span className="buttons__box-target-text">Page {currentPage} of {lastPage}</span>
+ 
                         {currentPage < 17 ? (
                         <button
                         className="buttons__box-target-btn"
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage >= lastPage || loading}
                         >
-                                            Next
+                                <img src={img} alt="" className='buttons__box-target-next'/>
                         </button>
                         
                     ) : null}
+
+                    </div>
                     </div>
                 </div>              
             </div>
-        </div>
+
         );
 };  
 
