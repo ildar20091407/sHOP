@@ -45,11 +45,11 @@ const Numberlist = () => {
 
             <div className="buttons">
                 <div className="buttons__box">
-                    <div className="buttons__box-numbers">
 
                         
+                            <div className="buttons__box-numbers">
                                                {currentPage > 1 ? (
-                                                <button
+                                                   <button
                                                     onClick={() => handlePageChange(currentPage - 1)}
                                                     disabled={loading} // Упрощаем условие disabled
                                                 >
@@ -57,6 +57,7 @@ const Numberlist = () => {
                                                     
                                                 </button>
                                             ) : null}
+
                         {numbers.map((number) => ( // Используем "number" вместо "i" для понятности
                             <button 
                             className={`buttons__box-number ${currentPage === number ? 'buttons__box-number-active' : ''}`}
@@ -66,7 +67,6 @@ const Numberlist = () => {
                                 {number}
                                 </button>            
                         ))}
- 
                         {currentPage < 17 ? (
                         <button
                         className="buttons__box-target-btn"
@@ -77,8 +77,9 @@ const Numberlist = () => {
                         </button>
                         
                     ) : null}
+                        </div>
+ 
 
-                    </div>
                     </div>
                 </div>              
             </div>

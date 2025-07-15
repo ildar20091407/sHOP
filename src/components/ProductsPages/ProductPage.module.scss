@@ -61,7 +61,9 @@
     height: auto;
     margin-bottom: 10px;
     border-radius: 4px;
-    height: 350px;
+    max-height: 350px;
+    height: 100%;
+    margin-top: 20px;
   }
   
   .productTitle {
@@ -69,6 +71,7 @@
     margin-bottom: 5px;
     color: #333;
     height: 50px;
+    margin-top: 50px;
     
   }
   
@@ -117,8 +120,10 @@
   margin-top: 20px;
 }
 .img{
-  width: 50px;
-  height: 50px;
+   max-width: 50px;
+  max-height: 50px;
+  width: 100%;
+  height: 100%;
   position: absolute;
   bottom: 50px;
   right: 40px;
