@@ -6,13 +6,15 @@ import React, { useEffect, useState } from 'react';
         selectTotal,
         selectLimit,
         fetchProducts,
+        num
     } from '../store/weather/weatherSlice';
     import  './Number.scss'
     import img from "../assets/images/png-transparent-arrow-arrows-direction-universal-blue-line-filled-icon.png"
+    
 
-const Numberlist = () => {
-  const numbers = []; // Объявляем пустой массив
-  for (let i = 1; i <= 17; i++) { // Начинаем с 1 и идем до 17 включительно
+    const Numberlist = () => {
+        const numbers = []; // Объявляем пустой массив
+  for (let i = 1; i <= num; i++) { // Начинаем с 1 и идем до 17 включительно
     numbers.push(i); // Добавляем значение в массив
   }
   
@@ -82,12 +84,10 @@ const Numberlist = () => {
 
                     </div>
                 </div>              
-            </div>
+                </div>              
+
 
         );
 };  
 
 export default Numberlist;
-
-
-

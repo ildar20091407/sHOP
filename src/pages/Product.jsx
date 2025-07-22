@@ -17,6 +17,8 @@ import {
 } from '../store/weather/weatherSlice';
 import s from '../pages/Product.module.scss';  // Import your CSS module
 
+let data = 0
+
 const Products = () => {
     const dispatch = useDispatch();
     const products = useSelector(selectProducts);
@@ -32,9 +34,10 @@ const Products = () => {
             return [];
         }
 
+        
         const sorted = [...productsToSort].sort((a, b) => {
             let comparison = 0;  // Added variable
-
+            
             if (sortField === 'price') {
                 comparison = a.price - b.price;
             } else if (sortField === 'name') {
@@ -50,14 +53,14 @@ const Products = () => {
         });
         return sorted;
     }, []);
-
+    
     useEffect(() => {
-        dispatch(fetchProducts({ skip: 0 }));  // Only dispatch once, initial loading.  No sort params here.
+        dispatch(fetchProducts());  // Only dispatch once, initial loading.  No sort params here.
     }, [dispatch]);
-
+    
     const filteredProducts = useMemo(() => {
         let results = [...products]; // Start with all products
-
+        
         // Apply sorting
         if (sortPrice) {
             results = sortProducts(results, 'price', sortPrice);
@@ -66,38 +69,40 @@ const Products = () => {
         } else if (sortQuantity) {
             results = sortProducts(results, 'stock', sortQuantity);
         }
-
+        
         // Apply filtering
         if (searchTerm) {
             results = results.filter(product =>
                 product.title?.toLowerCase().includes(searchTerm.toLowerCase()) // Safe access
             );
         }
-
+        
         return results;
     }, [products, sortPrice, sortName, sortQuantity, searchTerm, sortProducts]);
-
+    
+    data = filteredProducts.total
+    
     const toggleSortPrice = useCallback(() => {
         dispatch(setSortPrice(sortPrice === 'asc' ? 'desc' : 'asc'));
     }, [dispatch, sortPrice]);
-
+    
     const toggleSortName = useCallback(() => {
         dispatch(setSortName(sortName === 'asc' ? 'desc' : 'asc'));
     }, [dispatch, sortName]);
-
+    
     const toggleSortQuantity = useCallback(() => { // Corrected typo here
         dispatch(setSortQuantity(sortQuantity === 'asc' ? 'desc' : 'asc'));
     }, [dispatch, sortQuantity]);
-
+    
     if (loading) {
         return <Loader />;
     }
-
+    
     if (error) {
         return <p>Error: {error}</p>;
     }
-
-
+    
+    
     return (
         <div className={s.productsContainer}> {/* Wrap everything in a container with a CSS Module class */}
             {/* Search Input*/}
@@ -107,7 +112,7 @@ const Products = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className={s.searchInput} // Add a CSS Module class for styling the input
-            />
+                />
 
             <div className={s.buttonContainer}> {/* Container for buttons, for styling */}
                 <button onClick={toggleSortPrice}>
@@ -153,3 +158,5 @@ const Products = () => {
 };
 
 export default Products;
+ 
+export  {data}
